@@ -33,10 +33,12 @@
     padding: 0px;
 }
 body {
-    background-color: antiquewhite;
-    font-family: var(--fonte-padrao);
-    background: url() no-repeat fixed;
-
+    background-image: url(../imagens/v1008-25-a.jpg);
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 header {
     background-image: linear-gradient(to right, rgb(255, 175, 189), rgb(255, 195, 160));
@@ -55,18 +57,54 @@ header {
     color: #ff4220;
     /* background-color: blue; */
 }
+.flex-container-plano {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    margin: 10px;
+    padding: 10px;
+    color: #ff4220;
+    /* background-color: blue; */
+}
 img.foto-perfil {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 5px solid var(--cor4);
+    /* border: 5px solid var(--cor4); */
     /* margin: -80px;
     margin-bottom: 250px; */
 }
+div .item-perfil h2 {
+    background-color: var(--cor6);
+    border-radius: 10px;
+    text-align: center;
+    color: var(--cor8);
+    /* font-family: var(--fonte-destaque); */
+    /* font-size: 1.3em; */
+    /* color: var(--cor4); */
+    /* background-image: linear-gradient(50deg, var(--cor0), white); */
+    /* padding-left: 10px; */
+}
 h3 {
-    border: 1px solid var(--cor4);
+    /* border: 1px solid var(--cor4); */
 }
 div.flex-item-checkbox {
+    background-image: linear-gradient(to right, rgba(116, 235, 213, 1), rgba(172, 182, 229, 1));
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin: 10px;
+    padding: 10px;
+    color: #ffffff;
+    border-radius: 10px;
+    width: 300px;
+    height: 200px;
+}
+div.flex-item-planos {
     background-image: linear-gradient(to right, rgba(116, 235, 213, 1), rgba(172, 182, 229, 1));
     display: flex;
     flex-direction: column;
@@ -192,20 +230,13 @@ main .flex-item-checkbox h2 {
     text-shadow: 1px 1px 0px rgb(0 0 0) ;
     /* background-image: linear-gradient(50deg, var(--cor0), white); */
 }
-main .item-perfil h2 {
-    font-family: var(--fonte-destaque);
-    font-size: 1.3em;
-    color: var(--cor4);
-    background-image: linear-gradient(50deg, var(--cor0), white);
-    padding-left: 10px;
-}
-main p {
+/* main p {
     text-indent: 5%;
     line-height: 1.5em;
     text-align: justify;
     margin: 10px 0px;
     
-}
+} */
 main strong {
     color: var(--cor3);
 }
@@ -269,7 +300,6 @@ footer {
 }
 footer > p {
     font-size: 1.5em;
-
 }
 footer a {
     font-size: 1.3em;
