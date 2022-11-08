@@ -57,38 +57,56 @@ header {
     color: #ff4220;
     /* background-color: blue; */
 }
-.flex-container-plano {
+.flex-item-plano {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
     align-items: flex-start;
-    margin: 10px;
-    padding: 10px;
+    margin: auto;
+    width: 707px;
+    padding: 0px;
     color: #ff4220;
     /* background-color: blue; */
+    flex-wrap: nowrap;
+}
+.flex-container-planos {
+    background-image: linear-gradient(to right, rgba(116, 235, 213, 1), rgba(172, 182, 229, 1));
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    color: #ffffff;
+    border-radius: 10px;
+    width: 300px;
+    height: 100px;
+    justify-content: flex-start
 }
 img.foto-perfil {
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+    display: block;
     /* border: 5px solid var(--cor4); */
     /* margin: -80px;
     margin-bottom: 250px; */
 }
 div .item-perfil h2 {
     background-color: var(--cor6);
-    border-radius: 10px;
     text-align: center;
     color: var(--cor8);
-    /* font-family: var(--fonte-destaque); */
-    /* font-size: 1.3em; */
-    /* color: var(--cor4); */
-    /* background-image: linear-gradient(50deg, var(--cor0), white); */
-    /* padding-left: 10px; */
+    padding: 5px;
 }
-h3 {
-    /* border: 1px solid var(--cor4); */
+div .item-perfil p {
+    background-color: var(--cor6);
+    text-align: center;
+    color: var(--cor8);
+    padding: 5px;
 }
+
 div.flex-item-checkbox {
     background-image: linear-gradient(to right, rgba(116, 235, 213, 1), rgba(172, 182, 229, 1));
     display: flex;
@@ -104,7 +122,7 @@ div.flex-item-checkbox {
     width: 300px;
     height: 200px;
 }
-div.flex-item-planos {
+div.flex-index {
     background-image: linear-gradient(to right, rgba(116, 235, 213, 1), rgba(172, 182, 229, 1));
     display: flex;
     flex-direction: column;
@@ -114,10 +132,72 @@ div.flex-item-planos {
     align-items: stretch;
     margin: 10px;
     padding: 10px;
+    letter-spacing: 2px;
+    color: var(--cor9);
+    border-radius: 10px;
+    width: 500px;
+    height: 200px;
+    font-family: var(--fonte-destaque);
+    text-align: center;
+}
+
+div.flex-item-planos {
+    background-image: linear-gradient(to right, rgba(116, 235, 213, 1), rgba(172, 182, 229, 1));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
     color: #ffffff;
     border-radius: 10px;
-    width: 300px;
-    height: 200px;
+    width: 250px;
+    height: 300px;
+}
+div .flex-item-planos h3 {
+    font-family: var(--fonte-destaque);
+    text-align: center;
+    color: var(--cor8);
+    letter-spacing: 2px; 
+    font-size: 25px;
+}
+.card-text {
+    font-family: var(--fonte-padrao);
+    text-align: center;
+    color: var(--cor9);
+    padding: 10px;
+    background-color: #e8f6ff;
+    border-radius: 5px;
+}
+.list-group {
+    font-family: var(--fonte-padrao);
+    text-align: center;
+    color: var(--cor5);
+    padding: 5px;
+    display: inline;
+}
+.card-valor {
+    font-family: var(--fonte-01);
+    font-size: 30px;
+    text-align: center;
+    color: var(--cor4);
+}
+.card-footer {
+    font-family: var(--fonte-01);
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+    color: var(--cor4);
+}
+.btn {
+    background-color: var(--cor4);
+    border: 1px solid var(--cor4);
+    border-radius: 5px;
+    color: var(--cor5);
+    font-family: var(--fonte-01);
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
 }
 div .custom-control.custom-checkbox {
     font-size: 1.6em;
@@ -127,6 +207,17 @@ div .custom-control.custom-checkbox {
 div .custom-control-input {
     width: 20px;
     height: 20px;
+}
+div .caixa-pet {
+    font-size: 1.5em;
+    font-family: var(--fonte-padrao);
+    padding: 10px;
+    width: 225px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid var(--cor4);
+    background-color: var(--cor5);
+    margin: 10px;
 }
 div .caixa-hora {
     font-size: 1.5em;
@@ -171,7 +262,6 @@ header > h1 {
     margin-bottom: 10px;
     font-size: 3em;
     letter-spacing: .4rem;
-
     text-shadow: 3px 2px 1px #00000038;
 }
 header >  img {
