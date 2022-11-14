@@ -87,12 +87,11 @@ header {
     padding: 20px;
     font-size: 2em;
     letter-spacing: 0.1em;
-    margin-top: 15px;
+    margin-top: 10px;
     color: var(--cor9);
 }
 .perfile-text {
     font-family: var(--fonte-padrao);
-    background-color: #98d6ff62;
     font-size: 1em;
     padding: 20px;
     padding-bottom: 0;
@@ -177,20 +176,6 @@ header {
     justify-content: center;
 }
 .btn-reservar {
-    background-color: var(--cor1);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-family: var(--fonte-02);
-    font-size: 20px;
-    text-decoration: none;
-    margin-top: 20px;
-    display: block;
-    text-align: center;
-    width: 90%;
-    min-width: 200px;
-}
-.btn-reservar:hover {
     background-color: var(--cor2);
     color: #fff;
     padding: 10px 20px;
@@ -204,24 +189,39 @@ header {
     width: 90%;
     min-width: 200px;
 }
-.mensagemm {
-    margin-top: 10px;
-}
-.enviar-mensagem {
-    background-color: var(--cor8);
-    color: #314933;
-    border-top: 1px solid rgb(88, 88, 88);
+.btn-reservar:hover {
+    background-color: rgba(125, 255, 113, 0.863);
+    color: black;
     padding: 10px 20px;
+    border-radius: 5px;
     font-family: var(--fonte-02);
     font-size: 20px;
     text-decoration: none;
     margin-top: 20px;
     display: block;
     text-align: center;
-    height: 40px;
     width: 90%;
     min-width: 200px;
+}
+.box-mensagem {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.enviar-mensagem {
+    background-color: var(--cor2);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: var(--fonte-02);
+    font-size: 20px;
     text-decoration: none;
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+    width: 90%;
+    min-width: 200px;
 }
 .enviar-mensagem:hover {
     background-color: var(--cor7);
@@ -251,6 +251,16 @@ header {
     min-width: 200px;
 }
 /* End information */
+
+
+
+
+
+
+
+
+
+
 .flex-servico {
     background-color: var(--cor6);
     box-shadow: 0px 0px 10px -6px var(--cor8);

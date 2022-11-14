@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="perfil.css">
     <link rel="stylesheet" href="dialog.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -59,27 +60,65 @@
                                 <h2>Reserva</h2>
                                 <button class="btn-close" type="button">X</button>
                             </div>
-                            <div class="dialog-body">
+                            <div class="dialog-body" id="my-group">
                                 <h5>Selecione o Serviço</h5>
-                                <ul class="tab-funcao">
-                                    <li>
-                                        <button class="block-btn" type="submit" value="">Passeio</button>
-                                    </li>
-                                    <li>
-                                        <button  class="block-btn" type="submit" value="">Hospedagem</button>
-                                    </li>
-                                    <li>
-                                        <button class="block-btn" type="submit" value="">Veterinário</button>
-                                    </li>
-                                </ul>
-                                <div class="tab-calendario">
-                                    <h3>Data do Serviço</h3>
-                                    Data<input type="date" name="" id="">
+                                <p class="servico">
+                                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Passeio
+                                    </button>
+                                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                                        Hospedagem
+                                    </button>
+                                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                                        Veterinário
+                                    </button>
+                                </p>
+                                <div class="collapse" id="collapseExample" data-parent="#my-group">
+                                    <div class="card card-body">
+                                        <div class="tab-calendario">
+                                            <h3>Data do Serviço</h3>
+                                            <div class="inicio">
+                                                Início<input type="date" name="" id="">
+                                            </div>
+                                            <h3>Horário do Serviço</h3>
+                                            <div class="inicio">
+                                                Início<input type="time" name="" id="">
+                                            </div>
+                                            <div class="fim">
+                                                Fim<input type="time" name="" id="">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div class="collapse" id="collapseExample2" data-parent="#my-group">
+                                    <div class="card card-body">
+                                        Conteúdo do botão 2
+                                    </div>
+                                </div>
+                                <div class="collapse" id="collapseExample3" data-parent="#my-group">
+                                    <div class="card card-body">
+                                        Conteúdo do botão 3
+                                    </div>
+                                </div>
+                            
+
+                                <!-- <ul class="tab-funcao">
+                                    <li>
+                                        <button class="block-btn" type="submit" value="btn-01">Passeio</button>
+                                    </li>
+                                    <li>
+                                        <button  class="block-btn" type="submit" value="btn-02">Hospedagem</button>
+                                    </li>
+                                    <li>
+                                        <button class="block-btn" type="submit" value="btn-03">Veterinário</button>
+                                    </li>
+                                </ul> -->
+
+
                             </div>
                         </dialog>
-                        <div class="mensagem">
+                        <div class="box-mensagem">
                             <a href="http://" class="enviar-mensagem">Enviar Mensagem</a>
+
                         </div>
                     </div>
                 </div>
@@ -101,6 +140,11 @@
             Desenvolido pelo Time de TEIT - Projeto <a href="https://trello.com/b/lPRcZjWK/amigodepatas" target="_blank">Amigo de Patas</a>
         </p>
     </footer>
+
     <script src="popup.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
 </body>
 </html>
