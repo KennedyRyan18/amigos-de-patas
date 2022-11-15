@@ -55,7 +55,7 @@ dialog::backdrop {
   border: none;
   border-radius: 10px;
   width: 500px;
-  height: 500px;
+  /* height: 500px auto; */
   margin: 0 auto;
   padding: 20px;
   position: relative;
@@ -104,14 +104,17 @@ dialog::backdrop {
 }
 .tab-funcao {
   display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 10px;
-    flex-direction: row;
-    flex-wrap: nowrap;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 .servico {
-  
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
 }
 .block-btn {
   font-family:  var(--fonte-android);
@@ -133,5 +136,52 @@ ul {
   list-style-type: '';
   columns: 2;
   list-style-position: outside;
+}
+.btn-servico {
+  font-family: var(--fonte-01);
+  font-size: 30px;
+  letter-spacing: 2px;
+  color: var(--cor5);
+  padding: 0px 10px 0 10px;
+  background-color: var(--cor8);
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+.btn-servico:hover {
+  background-color: var(--cor9);
+  color: #fff;
+  border: none;
+}
+.box-button-confirmar {
+  background-color: var(--cor8);
+  border: none;
+  border-radius: 5px;
+  color: var(--cor5);
+  font-family: var(--fonte-01);
+  font-size: 1.5rem;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+.confirmar {
+  background-color: var(--cor8);
+  border: none;
+  border-radius: 5px;
+  color: var(--cor5);
+  font-family: var(--fonte-01);
+  font-size: 1.5rem;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+.tab-calendario h3 {
+  font-family: var(--fonte-01);
+  font-size: 1.5rem;
+  letter-spacing: .1em;
+  color: var(--cor9);
+  margin-bottom: 10px;
 }
 /*  */

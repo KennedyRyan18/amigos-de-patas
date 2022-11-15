@@ -31,7 +31,6 @@
                             <p class="perfile-endereco"> 
                                 <img class="icon-house" src="../../icon/icons8-home.svg" alt="">
                                 <span class="perfile-dados">Boa Esperança - Parnaiba - Piauí</span>
-
                             </p>
                         </div>
                         <div class="star-avaliacao"></div>
@@ -45,10 +44,12 @@
                         </div>
                         <div class="price-table">
                             <div class="col-01">
+                                <h3>Passeio</h3>
                                 <h3>Hospedagem</h3>
                                 <!-- <span class="hosp-descricao">*O valor cobrado por diária.</span> -->
                             </div>
                             <div class="col-02">
+                                <h3>R$29,90</h3>
                                 <h3>R$55,00</h3>
                             </div>
                         </div>
@@ -63,35 +64,102 @@
                             <div class="dialog-body" id="my-group">
                                 <h5>Selecione o Serviço</h5>
                                 <p class="servico">
-                                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Passeio
+                                    <button class="btn-servico" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Passeio
                                     </button>
-                                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                                    <button class="btn-servico" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
                                         Hospedagem
                                     </button>
-                                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                                    <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
                                         Veterinário
-                                    </button>
+                                    </button> -->
                                 </p>
                                 <div class="collapse" id="collapseExample" data-parent="#my-group">
                                     <div class="card card-body">
                                         <div class="tab-calendario">
-                                            <h3>Data do Serviço</h3>
+                                            <h3 class="titulo-data">Data do Serviço</h3>
                                             <div class="inicio">
                                                 Início<input type="date" name="" id="">
                                             </div>
-                                            <h3>Horário do Serviço</h3>
+                                            <h3 class="titulo-horario">Horário do Serviço</h3>
                                             <div class="inicio">
                                                 Início<input type="time" name="" id="">
                                             </div>
                                             <div class="fim">
                                                 Fim<input type="time" name="" id="">
                                             </div>
+                                            <div class="select-pet">
+                                                <h3>Selecione o Pet</h3>
+                                                <select name="" id="">
+                                                    <option value="">Selecione</option>
+                                                    <option value="">Cachorro</option>
+                                                    <option value="">Gato</option>
+                                                </select>
+                                                <h3>Quantidade</h3>
+                                                <section>
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                                                                <span class="glyphicon glyphicon-minus"></span>
+                                                            </button>
+                                                        </span>
+                                                        <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+                                                                <span class="glyphicon glyphicon-plus"></span>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                            <div class="box-button-confirma">
+                                                <button class="confirmar" type="submit">Confirmar</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="collapse" id="collapseExample2" data-parent="#my-group">
                                     <div class="card card-body">
-                                        Conteúdo do botão 2
+                                        <div class="tab-calendario">
+                                            <h3 class="titulo-data">Data do Serviço</h3>
+                                            <div class="inicio">
+                                                Início<input type="date" name="" id="">
+                                                Fim<input type="date" name="" id="">
+                                            </div>
+                                            <h3 class="titulo-horario">Horário do Serviço</h3>
+                                            <div class="inicio">
+                                                Início<input class="time" type="time" name="" id="">
+                                            </div>
+                                            <div class="fim">
+                                                Fim<input class="time" type="time" name="" id="">
+                                            </div>
+                                            <div class="select-pet">
+                                                <h3>Selecione o Pet</h3>
+                                                <select name="" id="">
+                                                    <option value="">Selecione</option>
+                                                    <option value="">Cachorro</option>
+                                                    <option value="">Gato</option>
+                                                </select>
+                                                <h3>Quantidade</h3>
+                                                <section>
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                                                                <span class="glyphicon glyphicon-minus"></span>
+                                                            </button>
+                                                        </span>
+                                                        <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+                                                                <span class="glyphicon glyphicon-plus"></span>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                            <div class="box-button-confirma">
+                                                <button class="confirmar" type="submit">Confirmar</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="collapse" id="collapseExample3" data-parent="#my-group">
