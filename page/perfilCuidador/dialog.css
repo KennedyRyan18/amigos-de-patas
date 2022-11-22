@@ -90,7 +90,7 @@ dialog::backdrop {
   border: none;
 }
 .dialog-body {
-  background : #98d6ff54;
+  background : #08d80154;
   border-radius: 5px;
   padding: 10px;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.137);
@@ -184,4 +184,5 @@ ul {
   color: var(--cor9);
   margin-bottom: 10px;
 }
+
 /*  */
