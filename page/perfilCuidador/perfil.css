@@ -129,13 +129,14 @@ main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center
+    justify-content: space-evenly;
 
 }
 /* End box-perfile */
 /* Start box-content */
 .box-content {
     background-color: #fff;
+    padding: 30px 0 20px 0;
     margin-top: 10px;
     margin-bottom: 20px;
     font-size: 16px;
@@ -171,16 +172,19 @@ main {
     font-family: var(--fonte-02);
     font-size: 1.6em;
     color: var(--cor8);
+    padding-top: 20px;
+}
+.hosp-descricao {
+    font-family: var(--fonte-android);
+    text-align: center;
+    color: var(--cor4);
+    font-size: 0.6em;
 }
 .col-02 {
     font-family: var(--fonte-02);
     font-size: 1.6em;
     color: var(--cor9);
-}
-.hosp-descricao {
-    font-family: var(--fonte-android);
-    color: var(--cor4);
-    font-size: 0.6em;
+    padding-top: 20px;
 }
 
 .box-button {
