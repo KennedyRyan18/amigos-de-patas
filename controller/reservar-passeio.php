@@ -9,6 +9,7 @@
     // $horario_fim = filter_input(INPUT_POST, 'horario-fim');
     // $tipo_servico = filter_input(INPUT_POST, 'tipo-servico');
 
+
     $nome_cuidador = $_POST['nome-cuidador'];
     $nome_dono = $_POST['nome-dono'];
     $nome_pet = $_POST['nome-pet'];
@@ -17,33 +18,29 @@
     $data_inicio = $_POST['data-inicio'];   
     $horario_inicio = $_POST['horario-inicio'];
     $horario_fim = $_POST['horario-fim'];
+    $valor_servico = $_POST['valor-servico'];
 
 
-    if(empty($nome_cuidador) && empty($nome_dono) && empty($nome_pet) && empty($tipo_pet) && empty($tipo_servico) && empty($data_inicio) && empty($horario_inicio) && empty($horario_fim)) {
+    if(empty($nome_cuidador) && empty($nome_dono) && empty($nome_pet) && empty($tipo_pet) && empty($tipo_servico) && empty($data_inicio) && empty($horario_inicio) && empty($horario_fim) && empty($valor_servico)) {
       echo '<script>alert("Erro: preencha os dados da reserva")</script>';
 
     } else {
-      $consulta = "SELECT * FROM agendamento WHERE nome_cuidador = '$nome_cuidador' AND nome_dono = '$nome_dono' AND nome_pet = '$nome_pet' AND tipo_pet = '$tipo_pet' AND tipo_servico = '$tipo_servico' AND data_inicio = '$data_inicio' AND horario_inicio = '$horario_inicio' AND horario_fim = '$horario_fim'";
+      $consulta = "SELECT * FROM agendamento WHERE nome_cuidador = '$nome_cuidador' AND nome_dono = '$nome_dono' AND nome_pet = '$nome_pet' AND tipo_pet = '$tipo_pet' AND tipo_servico = '$tipo_servico' AND data_inicio = '$data_inicio' AND horario_inicio = '$horario_inicio' AND horario_fim = '$horario_fim' AND valor_servico = '$valor_servico'";
       $resultConsulta = mysqli_query($conexao, $consulta);
       $row = mysqli_num_rows($resultConsulta);
 
 
       if($row > 0) {
-        echo '<script>alert("Erro: já existe uma reserva para este horário")</script>';
+        echo "<script>alert('Erro: já existe uma reserva para este horário')</script>";
       } else {
-        $result = mysqli_query($conexao, "INSERT INTO agendamento (nome_cuidador, nome_dono, nome_pet, tipo_pet, tipo_servico, data_inicio, horario_inicio, horario_fim) VALUES ('$nome_cuidador', '$nome_dono', '$nome_pet', '$tipo_pet', '$tipo_servico', '$data_inicio', '$horario_inicio', '$horario_fim')");
+        $result = mysqli_query($conexao, "INSERT INTO agendamento (nome_cuidador, nome_dono, nome_pet, tipo_pet, tipo_servico, data_inicio, horario_inicio, horario_fim, valor_servico) VALUES ('$nome_cuidador', '$nome_dono', '$nome_pet', '$tipo_pet', '$tipo_servico', '$data_inicio', '$horario_inicio', '$horario_fim', '$valor_servico')");
+        echo "<script>alert('Reserva realizada com sucesso!')</script>";
 
-        // if($result) {
-        //   echo '<script>alert("Reserva realizada com sucesso")</script>';
-        // } else {
-        //   echo '<script>alert("Erro: não foi possível realizar a reserva")</script>';
-        // }
       }
-
-      // $result = mysqli_query($conexao, "INSERT INTO agendamento (data_inicio, horario_inicio, horario_fim, tipo_servico) VALUES ('$data_inicio', '$horario_inicio', '$horario_fim', '$tipo_servico')");
-      // echo '<script>alert("Reserva realizada com sucesso!")</script>';
     }
 
   }
   header('Location: ../index.php');
+  // echo "<script>alert('Reserva realizada com sucesso!')</script>";
+  
 ?>

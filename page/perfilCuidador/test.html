@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="" method="post">
+    data um: <input type="date" name="valor" id="valor_01" oninput="calcularDias()">
+    data dois: <input type="date" name="valor" id="valor_02" oninput="calcularDias()">
+    resultado: <input type="text" id="resultado">
+  </form>
+
+  <script>
+    function calcularDias() {
+      const valor_01 = new Date(document.getElementById('valor_01').value);
+      const valor_02 = new Date(document.getElementById('valor_02').value);
+  
+      var start = Math.floor(valor_01.getTime() / (1000 * 60 * 60 * 24));
+      var end = Math.floor(valor_02.getTime() / (1000 * 60 * 60 * 24));
+      var diff = end - start;
+  
+      document.getElementById('resultado').value = diff;
+
+    } 
+  </script>
+</body>
+</html>
+

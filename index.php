@@ -1,3 +1,9 @@
+<?php
+    include_once('db/conexao.php');
+
+    session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,60 +23,62 @@
         document.getElementsByClassName()
     </script>
 
-    <title>Agendamento</title>
+    <title>Perfil dos Cuidadores</title>
 </head>
 <body >
-
     <header>
-        <div class="logo">
-            <h1>Amigo de Patas</h1>
+        <div>
+            <a class="navbar-brand " href="#">
+                <img src="img/logo.png" width="200" height="120" class="img-fluid">
+            </a>
         </div>
         
         <div class="Perfil">
             <div class="log">
                 <h3 class="NomeProfile">
                     <?php
-                    include_once('db/conexao.php');
-                    $result = mysqli_query($conexao, "SELECT `Nome_Dono` FROM `dono` WHERE `Cod_Dono` = 1");
-                    echo mysqli_fetch_assoc($result)['Nome_Dono'];
+
+                        $result = mysqli_query($conexao, "SELECT `nome` FROM `tbDono` WHERE `idDono` = 1");
+                        echo mysqli_fetch_assoc($result)['nome'];
                     ?>
                 </h3>        
-                 <a href="#"><p class="Logout">Sair</p></a>
+                <a href="#"><p class="Logout">Sair</p></a>
             </div>
             
             <div class="foto">
                 <a href="#">
-                    <img src="page/servico/img/user.png" width="80px">
+                    <img src="img/user.png" width="80px">
                 </a>
             </div>
         </div>
     </header>
     <main>
-       
         <div class="box">
-            <h3>Encontre seu profissional aqui</h3>
-            <h4>Qual serviço você deseja?</h4>
+            <h3>Serviços Disponíveis</h3>
+            <h4>Aqui seu animal é tratado igual a um rei!</h4>
 
-            <ul class="btn">
 
-                <li class="active">
-                    <a href="#" class="active">
-                        <div class="container1">
-                            <img src="page/servico/img/dogHospedagem.jpeg" width="120px">
-                            <h2>Hospedagem<h2>
-                        </div>
-                    </a>
-                </li>
 
-                <li>
-                    <a href="#">
-                        <div class="container2">
-                            <img src="page/servico/img/dogPasseio.jpeg" width="120px">
-                            <h2>Passeio<h2>
-                        </div>
-                    </a>
-                </li>
+                <ul class="btn">
 
+                    <li class="active">
+                        <a href="#" class="active">
+                            <div class="container1">
+                                <img src="img/dogHospedagem.jpeg" width="120px">
+                                <h2>Hospedagem<h2>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <div class="container2">
+                                <img src="img/dogPasseio.jpeg" width="120px">
+                                <h2>Passeio<h2>
+                            </div>
+                        </a>
+                    </li>
+            
                 <!-- <li>
                     <a href="#">
                         <div class="container3">
@@ -87,20 +95,24 @@
 
         <div class="box2">
             <div class="pet">
-                <h4>Qual é o seu pet?<h4>
-                <select name="pets">
-                    <option value="0"></option>
-                    <option value="1">Gato</option>
-                    <option value="2">Cachorro(até 10kg)</option>
-                    <option value="3">Cachorro(até +10kg)</option>
-                </select>
-            </div>
+                <form action="\amigosdepatasv4\page\pesquisarCuidador\pesquisa.php" method="POST">
+                    <label>Qual serviço você deseja?</label>
 
-            <a class="btn-buscar" href="page/perfilCuidador/perfil01.php">
+                    <select name="buscar" id="buscar">
+                        <option value="0"></option>
+                        <option value="hospedagem">Hospedagem</option>
+                        <option value="passeio">Passeio</option>
+                    </select>
+
+                    <button class="btn-buscar" type="submit">Buscar</button>
+                </form>
+            </div>
+            <!-- <a class="btn-buscar" href="page/pesquisarCuidador/pesquisa.php">
                 <div>
                     <p>Buscar</p>
                 </div>
-            </a>
+            </a> -->
+
         </div>
         
     </main>

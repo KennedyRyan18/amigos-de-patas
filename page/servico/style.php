@@ -8,11 +8,11 @@ html, body{
 }
 
 body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: url(/img/v1008-25-a.jpg);
-    background-size: contain;
+    background: url(../../img/v1008-25-a.jpg) no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
 }
 
 
@@ -58,7 +58,11 @@ main{
 }
 
 /*Logo*/
-
+.img-fluid {
+    width: 200px;
+    aspect-ratio: auto 200 / 200;
+    height: 90px;
+}
 .logo{
     color: #813F3F;
 }
@@ -78,7 +82,8 @@ main{
     width: 1100px;
     height: 450px;
     background-color: white;
-    box-shadow: -5px 6px 8px #ccc;
+    box-shadow: -5px 6px 8px #3e3e3e63;
+    border-radius: 10px;
 }
 
 .box h3, h4{
@@ -119,6 +124,7 @@ ul li.active a{
     /* margin-right: 100px;  */
     border-radius: 15px;
     /* box-shadow: -4px 6px 5px #ccc; */
+    height: 200px;
 }
 
 .container1 img{
@@ -134,6 +140,7 @@ ul li.active a{
     /* margin-right: 100px; */
     border-radius: 15px;
     /* box-shadow: -5px 4px 4px 0px rgba(138, 131, 131, 0.2); */
+    height: 200px;
 
 }
 
@@ -194,12 +201,14 @@ h4{
     width: 660px;
     height: 80px;
     background-color: white;
-    box-shadow: -5px 6px 8px #ccc;
+    box-shadow: -5px 6px 8px #3e3e3e63;
+    border-radius: 10px;
     margin-bottom: 30px;
 }
 
 .pet{
     display: flex;
+    flex-direction: rom;
     align-items: center;
 }
 
@@ -212,7 +221,7 @@ h4{
     border: 1px solid black;
 }
 
-.btn-buscar{
+/*.btn-buscar{
     background-color:#FFC3A0;
     width: 100px;
     height: 35px;
@@ -221,4 +230,19 @@ h4{
     padding-top: 9px;
     box-shadow: -3px 2px #ccc;
     text-decoration: none;
+}*/
+
+.btn-buscar{
+    background-color:#FFC3A0;
+    width: 100px;
+    height: 35px;
+    border: 1px solid #FFC3A0;
+    box-shadow: 5px 3px 5px #ccc;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 15px;
+}
+.btn-buscar:hover{
+    border: 2px solid rgb(17, 54, 219);
 }

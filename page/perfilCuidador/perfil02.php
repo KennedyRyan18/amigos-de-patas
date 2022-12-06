@@ -1,4 +1,6 @@
-
+<?php
+    include_once('../../db/conexao.php');
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -29,21 +31,17 @@
                         <img class="foto-perfile" src="https://images.pexels.com/photos/8498533/pexels-photo-8498533.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="">
                         <div class="box-perfile-name">
                             <h2 class="perfile-name" name="nome-cuidador">
-                                <?php
-                                    include_once('../../db/conexao.php');
-
-                                    $result = mysqli_query($conexao, "SELECT `Nome_Cuidador` FROM `cuidador` WHERE `Cod_cuidador` = 2");
-                                    echo mysqli_fetch_assoc($result)['Nome_Cuidador'];
+                            <?php
+                                    $result = mysqli_query($conexao, "SELECT nomeCuidador FROM `tbCuidador` WHERE `idCuidador` = 2");
+                                    echo mysqli_fetch_assoc($result)['nomeCuidador'];
                                 ?>
                             </h2>
                             <p class="perfile-text">Amor puro e verdadeiro se manifesta nos animais!</p>
                             <p class="perfile-endereco"> 
                                 Bairro:<span class="perfile-dados">
                                     <?php
-                                        include_once('../../db/conexao.php');
-
-                                        $result = mysqli_query($conexao, "SELECT `Bairro` FROM `cuidador` WHERE `Cod_cuidador` = 2");
-                                        echo mysqli_fetch_assoc($result)['Bairro'];
+                                        $result = mysqli_query($conexao, "SELECT bairro FROM tbendcuidador WHERE idEndCuidador = 2");
+                                        echo mysqli_fetch_assoc($result)['bairro'];
                                     ?>
                                 </span>
                             </p>
@@ -60,44 +58,32 @@
                         <div class="price-table">
                             <div class="col-01">
                                 <h3>
-                                    <?php
-                                    include_once('../../db/conexao.php');
-
-                                    $result = mysqli_query($conexao, "SELECT `Tipo_servico` FROM `servico` WHERE `Cod_servico` = 2");
-                                    echo mysqli_fetch_assoc($result)['Tipo_servico'];
+                                <?php
+                                        $result = mysqli_query($conexao, "SELECT s.nomeServico, c.nomeCuidador FROM tbservico s INNER JOIN tbcuidadorservico cs ON s.idServico = cs.idServico INNER JOIN tbcuidador c ON cs.idCuidador = c.idCuidador WHERE s.idServico = 1 AND c.idCuidador = 1");
+                                        echo mysqli_fetch_assoc($result)['nomeServico'];
                                     ?>
                                 </h3>
-                                <!-- <h3>
-                                    <?php
-                                    include_once('../../db/conexao.php');
-
-                                    $result = mysqli_query($conexao, "SELECT `Tipo_servico` FROM `servico` WHERE `Cod_servico` = 1");
-                                    echo mysqli_fetch_assoc($result)['Tipo_servico'];
-                                    ?>
-                                </h3> -->
+                                <h3>
+                                    <!-- <?php
+                                        $result = mysqli_query($conexao, "SELECT s.tiposervico, c.nomeCuidador FROM tbservico s INNER JOIN tbcuidadorservico cs ON s.idServico = cs.idServico INNER JOIN tbcuidador c ON cs.idCuidador = c.idCuidador WHERE s.idServico = 2 AND c.idCuidador = 1");
+                                        echo mysqli_fetch_assoc($result)['nomeServico'];
+                                    ?> -->
+                                </h3>
                             </div>
                             <div class="col-02">
                                 <h3>
                                     <?php
-                                    include_once('../../db/conexao.php');
-
-                                    $result = mysqli_query($conexao, "SELECT `Valor_servico` FROM `servico` WHERE `Cod_servico` = 2");
-                                    echo mysqli_fetch_assoc($result)['Valor_servico'];
+                                        $result = mysqli_query($conexao, "SELECT s.valor, c.nomeCuidador FROM tbservico s INNER JOIN tbcuidadorservico cs ON s.idServico = cs.idServico INNER JOIN tbcuidador c ON cs.idCuidador = c.idCuidador WHERE s.idServico = 1 AND c.idCuidador = 1");
+                                        echo mysqli_fetch_assoc($result)['valor'];
                                     ?>
                                 </h3>
                                 <!-- <h3>
                                     <?php
-                                    include_once('../../db/conexao.php');
-
-                                    $result = mysqli_query($conexao, "SELECT `Valor_servico` FROM `servico` WHERE `Cod_servico` = 1");
-                                    echo mysqli_fetch_assoc($result)['Valor_servico'];
+                                        $result = mysqli_query($conexao, "SELECT s.valor, c.nomeCuidador FROM tbservico s INNER JOIN tbcuidadorservico cs ON s.idServico = cs.idServico INNER JOIN tbcuidador c ON cs.idCuidador = c.idCuidador WHERE s.idServico = 2 AND c.idCuidador = 1");
+                                        echo mysqli_fetch_assoc($result)['valor'];
                                     ?>
                                 </h3> -->
                             </div>
-                            <!-- <div>
-                                    <p class="hosp-descricao">*O valor do passeio é cabrado por hora.</p>
-                                    <p class="hosp-descricao">*O valor da hospedagem é cabrado por dia.</p>
-                                </div> -->
                         </div>
                         <div class="box-button">
                             <button class="btn-reservar">Reservar</button>
@@ -112,167 +98,382 @@
                                 <p class="servico">
                                     <button class="btn-servico" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Passeio</button>
                                     <!-- <input class="btn-servico" type="button" name="passeio" id="passeio" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" value="Passeio"> -->
+
                                     <!-- <button class="btn-servico" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">Hospedagem</button> -->
+
                                     <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
                                         Veterinário
                                     </button> -->
                                 </p>
-                                
                                 <form action="../../controller/reservar-passeio.php" method="post">
-                                
                                     <div class="collapse" id="collapseExample" data-parent="#my-group">
                                         <div class="card card-body">
                                             <div class="tab-calendario">
-                                            <div class="box-pet">
-                                                    <!-- Teste -->
-                                                    <select class="select" name="nome-cuidador" id="nome-cuidador">
-                                                        <option value="<?php
-                                                            include_once('../../db/conexao.php');
-
-                                                            $result = mysqli_query($conexao, "SELECT `Nome_Cuidador` FROM `cuidador` WHERE `Cod_cuidador` = 1");
-                                                            echo mysqli_fetch_assoc($result)['Nome_Cuidador'];
-                                                        ?>">Cuidador 1</option>
+                                                <div class="box-pet">
+                                                    <!-- CUIDADOR-->
+                                                    <h3>Cuidador</h3>
+                                                    <select name="nome-cuidador" id="nome-cuidador">
+                                                        <option value="">
+                                                            <?php
+                                                                $result = mysqli_query($conexao, "SELECT nomeCuidador FROM tbCuidador WHERE `idCuidador` = 2");
+                                                                echo mysqli_fetch_assoc($result)['nomeCuidador'];
+                                                            ?>
+                                                        </option>
                                                     </select>
+                                                    <!-- CUIDADOR -->
+                                                    <!-- DONO -->
+                                                    <h3>Dono</h3>
                                                     <select name="nome-dono" id="nome-dono">
-                                                        <option value="<?php
-                                                            include_once('../../db/conexao.php');
-
-                                                            $result = mysqli_query($conexao, "SELECT `Nome_Dono` FROM `dono` WHERE `Cod_Dono` = 1");
-                                                            echo mysqli_fetch_assoc($result)['Nome_Dono'];
-                                                        ?>">Dono 1</option>
+                                                        <option value="">
+                                                            <?php
+                                                                $result = mysqli_query($conexao, "SELECT nome FROM `tbDono` WHERE `idDono` = 1");
+                                                                echo mysqli_fetch_assoc($result)['nome'];
+                                                            ?>
+                                                        </option>
                                                     </select>
-                                                    <select name="nome-pet" id="nome-pet">
-                                                        <option value="<?php
-                                                            include_once('../../db/conexao.php');
-
-                                                            $result = mysqli_query($conexao, "SELECT `Nome_Pet` FROM `pet` WHERE `Cod_Pet` = 1");
-                                                            echo mysqli_fetch_assoc($result)['Nome_Pet'];
-                                                        ?>">Pet 1</option>
+                                                    <!-- DONO -->
+                                                    <!-- TIPO DE PET -->
+                                                    <h3>Selecione o Pet</h3>
+                                                    <select class="select-pet" name="tipo-pet" id="tipo-pet" required>
+                                                        <option value=""></option>
+                                                        <option value="2">
+                                                            <?php
+                                                                $result = mysqli_query($conexao, "SELECT `tipoPet` FROM `tbPet` WHERE `idPet` = 2");
+                                                                echo mysqli_fetch_assoc($result)['tipoPet'];
+                                                            ?>
+                                                        </option>
                                                     </select>
-                                                    <select name="tipo-pet" id="tipo-pet">
-                                                        <option value="<?php
-                                                            include_once('../../db/conexao.php');
-
-                                                            $result = mysqli_query($conexao, "SELECT `Tipo_Pet` FROM `pet` WHERE `Cod_Pet` = 1");
-                                                            echo mysqli_fetch_assoc($result)['Tipo_Pet'];
-                                                        ?>" required>tipo pet</option>
-                                                    </select>
-                                                    <!-- Teste -->
-                                                    
+                                                    <!-- TIPO DE PET -->
+                                                    <!-- TIPO DE SERVIÇO -->
+                                                    <h3>Tipo de Serviço</h3>
                                                     <select name="tipo-servico" id="tipo-servico">
-                                                        <option value="passeio" name="passeio" required>passeio</option>
+                                                    <option value="1">
+                                                            <?php
+                                                                $result = mysqli_query($conexao, "SELECT nomeServico FROM tbServico WHERE idServico = 1");
+                                                                echo mysqli_fetch_assoc($result)['nomeServico'];
+                                                            ?>
+                                                        </option>
+                                                    </option>
                                                     </select>
+                                                    <!-- TIPO DE SERVIÇO -->
+                                                    <!-- PET -->
                                                 </div>
+                                                <!-- DATA -->
                                                 <h3 class="titulo-data">Data</h3>
                                                 <div class="box-data">
-                                                    Início<input type="date" name="data-inicio" id="data-inicio" required>
+                                                    <label for="data-inicio">Início</label>
+                                                    <input type="date" name="data-inicio" id="data-inicio" min="<?php $date_min = date('Y-m-d'); echo $date_min;?>" max="<?php $d = strtotime("+14 Days"); echo date('Y-m-d', $d);?>" required>
                                                 </div>
+                                                <!-- DATA -->
+                                                <!-- HORARIO -->
                                                 <h3 class="titulo-horario">Horário</h3>
                                                 <div class="box-horario">
-                                                    Início<input type="time" name="horario-inicio" id="horario-inicio" required>
-                                                    <!-- Quantidade de Horas<input type="number" name="quantidade-horas" id="quantidade-horas" min="1" max="24" required> -->
-                                                    Fim<input type="time" name="horario-fim" id="horario-fim" required>
+                                                    <label for="horario-inicio">Início</label>
+                                                    <input type="time" name="horario-inicio" id="horario-start" min="08:00" max="17:00" oninput="calcHoras()" required >
+
+                                                    <label for="horario-fim">Fim</label>
+                                                    <input type="time" name="horario-fim" id="horario-end" min="09:00" max="18:00" oninput="calcHoras()" required >
+
+                                                    <script>
+                                                        var inputHora = document.getElementById('horario-start');
+                                                        var inputHora2 = document.getElementById('horario-end');
+
+                                                        input.addEventListener('input', function() {
+                                                            if (inputHora.value > inputHora2.value) {
+                                                                inputHora2.value = inputHora.value;
+                                                            }
+                                                        });
+
+                                                    </script>
+                                                    <div>
+                                                        Valor a Pagar R$: <input type="text" name="valor-servico" id="resultPasseio">
+                                                    </div>
+                                                    <!-- CALCULAR HORARIO -->
+                                                    <script>
+                                                        function calcHoras() {
+                                                            var horaInicio = document.getElementById('horario-start').value;
+                                                            var horaFim = document.getElementById('horario-end').value;
+
+                                                            var intervalo = parseInt(horaFim) - parseInt(horaInicio);
+
+                                                            var valor = intervalo * 20;
+
+                                                            document.getElementById('resultPasseio').value = valor;
+                                                        }
+                                                    </script>
+                                                    
+                                                <!-- CALCULAR HORARIO -->
                                                 </div>
-                                                
-                                                <div class="box-button-confirma">
-                                                    <!-- <button class="confirmar" type="submit">Confirmar</button> -->
-                                                    <input class="confirmar" type="submit" value="Confirmar" name="Confirmar">
-                                                </div>
+                                                <!-- HORARIO -->
                                             </div>
+                                            <!-- BOTAO CONFIRMAR -->
+                                            <div class="box-button-confirma" style="display: flex; justify-content: space-evenly;">
+                                                <input class="redefinir" type="reset"  value="Redefinir" name="Redefinir" style="
+                                                    background-color: var(--cor3);
+                                                    border: none;
+                                                    border-radius: 5px;
+                                                    color: var(--cor5);
+                                                    font-family: var(--fonte-01);
+                                                    font-size: 1.2rem;
+                                                    padding: 10px;
+                                                    cursor: pointer;
+                                                    width: 150px;
+                                                    margin-top: 10px;
+                                                ">
+                                                <input class="confirmar" type="submit" value="Confirmar" name="Confirmar" style="
+                                                    display: flex;
+                                                    justify-content: space-evenly;
+                                                    background-color: var(--cor8);
+                                                    border: none;
+                                                    border-radius: 5px;
+                                                    color: var(--cor5);
+                                                    font-family: var(--fonte-01);
+                                                    font-size: 1.2rem;
+                                                    padding: 10px;
+                                                    cursor: pointer;
+                                                    width: 150px;
+                                                    margin-top: 10px;
+                                                ">
+                                            </div>
+                                            <!-- BOTAO CONFIRMAR -->
                                         </div>
                                     </div>
                                 </form>
-                                <form action="../reservar-hospedagem.php" method="post">
-                                    <div class="collapse" id="collapseExample2" data-parent="#my-group">
-                                        <div class="card card-body">
-                                            <div class="tab-calendario">
-                                                <h3 class="titulo-data">Data do Serviço</h3>
-                                                <div class="inicio">
-                                                    Início<input type="date" name="data-inicio" id="data-inicio">
-                                                    Fim<input type="date" name="data-fim" id="data-fim">
-                                                </div>
-                                                <h3 class="titulo-horario">Horário do Serviço</h3>
-                                                <div class="inicio">
-                                                    Início<input class="time" type="time" name="hora-inicio" id="hora-inicio">
-                                                    Fim<input class="time" type="time" name="hora-fim" id="hora-fim">
-                                                <div class="select-pet">
-                                                    <h3>Selecione o Pet</h3>
-                                                    <select name="" id="">
-                                                        <option value="">Selecione</option>
-                                                        <option value="">Cachorro</option>
-                                                        <option value="">Gato</option>
-                                                    </select>
-                                                    <h3>Quantidade</h3>
-                                                    <section>
-                                                        <div class="input-group">
-                                                            <span class="input-group-btn">
-                                                                <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                                                    <span class="glyphicon glyphicon-minus"></span>
-                                                                </button>
-                                                            </span>
-                                                            <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
-                                                            <span class="input-group-btn">
-                                                                <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
-                                                                    <span class="glyphicon glyphicon-plus"></span>
-                                                                </button>
-                                                            </span>
-                                                        </div>
-                                                    </section>
-                                                </div>
-                                                <div class="box-button-confirma">
-                                                <input class="confirmar" type="submit" value="submit" name="Confirmar">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                    <div class="collapse" id="collapseExample3" data-parent="#my-group">
-                                        <div class="card card-body">
-                                            Conteúdo do botão 3
-                                        </div>
+                                <div class="collapse" id="collapseExample3" data-parent="#my-group">
+                                    <div class="card card-body">
+                                        Conteúdo do botão 3
                                     </div>
                                 </div>
-                            </dialog>
-
+                            </div>
+                        </dialog>
                         <div class="box-mensagem">
-                            <a href="http://" class="enviar-mensagem">Enviar Mensagem</a>
-
+                            <a class="enviar-mensagem" href="https://api.whatsapp.com/send?phone=5519999999999&text=Olá, gostaria de saber mais sobre os serviços do Amigos de Patas." target="_blank">Enviar Mensagem</a>
                         </div>
                     </div>
                 </div>
                 <div class="information">
                     <div>
-                        <h2 >Pets que aceito</h2>
+                        <h2>Pets que aceito</h2>
                     </div>
                     <div class="information-pets">
-                        <div class="pets-aceito">
+                        <div>
                             <img src="../../img/cachorro.png" alt="">
-                            <p>Cachorro</p>
+                            <p>Cachorro(a)</p>
+                            <p class="test">
+                                <?php
+                                    $result = mysqli_query($conexao, "SELECT tp.tipoPet FROM tbpet tp INNER JOIN tbcuidador c ON tp.idPet = c.idCuidador WHERE tp.tipoPet = 'cachorra' && tp.tipopet = 'cachorro' AND c.nomeCuidador = 'Marcia Maia';
+                                    ");
+                                    // echo mysqli_num_rows($result) . "<br>";
+                                    for($i = 0; $i < mysqli_num_rows($result); $i++){
+                                        // echo mysqli_fetch_assoc($result)['tipoPet'] . "<br>";
+                                    }
+                                    if(mysqli_num_rows($result) == 0){
+                                        echo "<p style='color:black;background-color:red;border-radius:20px;padding:2px'>" . "Não Aceito" . "</p>";
+                                    } else {
+                                        echo "<p style='color:black;background-color:#41fa13;border-radius:4px;padding:2px'>" . "Aceito" . "</p>";
+                                    }
+                                ?>
+                            </p>
                         </div>
-                        <div class="pest-nao-aceito">
-                            <img src="../../img/gato.png" title="Não aceito" alt="">
-                            <p>Gato</p>
+                        <div>
+                            <img src="../../img/gato.png" alt="">
+                            <p>Gato(a)</p>
+                                <p>
+                                    <?php
+                                        $result = mysqli_query($conexao, "SELECT tp.tipoPet FROM tbpet tp INNER JOIN tbcuidador c ON tp.idPet = c.idCuidador WHERE tp.tipoPet = 'gata' || tp.tipopet = 'gato' AND c.nomeCuidador = 'Marcia Maia';
+                                        ");
+                                        // echo mysqli_num_rows($result) . "<br>";
+                                        for($i = 0; $i < mysqli_num_rows($result); $i++){
+                                            // echo mysqli_fetch_assoc($result)['tipoPet'] . "<br>";
+                                        }
+                                        if(mysqli_num_rows($result) == 0){
+                                            echo "<p style='color:black;background-color:red;border-radius:20px;padding:2px'>" . "Não Aceito" . "</p>";
+                                        } else {
+                                            echo "<p style='color:black;background-color:#41fa13;border-radius:4px;padding:2px'>" . "Aceito" . "</p>";
+                                        }
+                                    ?>
+                                </p>
                         </div>
-                        <div class="pest-nao-aceito">
-                            <img src="../../img/até_10kg-removebg-preview (1).png" title="Não aceito" alt="">
-                            <p>até 10kg</p>
+                        <div>
+                            <img src="../../img/até_10kg-removebg-preview (1).png" alt="">
+                            <p>3-5kg</p>
+                            <p>
+                                <?php
+                                    $result = mysqli_query($conexao, "SELECT pp.peso FROM tbPesoPet pp INNER JOIN tbPesoPetCuidador ppc ON pp.idPesoPet = ppc.idPesoPet INNER JOIN tbcuidador c ON ppc.idCuidador = c.idCuidador WHERE pp.peso = '3-5kg' AND c.nomeCuidador = 'Marcia Maia';
+                                    ");
+                                    // echo mysqli_num_rows($result) . "<br>";
+                                    for($i = 0; $i < mysqli_num_rows($result); $i++){
+                                        // echo mysqli_fetch_assoc($result)['tipoPet'] . "<br>";
+                                    }
+                                    if(mysqli_num_rows($result) == 0){
+                                        echo "<p style='color:black;background-color:red;border-radius:20px;padding:2px'>" . "Não Aceito" . "</p>";
+                                    } else {
+                                        echo "<p style='color:black;background-color:#41fa13;border-radius:4px;padding:2px'>" . "Aceito" . "</p>";
+                                    }
+                                ?>
+                            </p>
                         </div>
-                        <div class="pets-aceito">
-                            <img src="../../img/até_25kg-removebg-preview.png" alt="">
-                            <p>até 25kg</p>
-                        </div>
-                        <div class="pets-aceito">
+                        <div>
                             <img src="../../img/+25kg-removebg-preview.png" alt="">
-                            <p>acima 25kg</p>
+                            <p>6-10kg</p>
+                            <p>
+                                <?php
+                                    $result = mysqli_query($conexao, "SELECT pp.peso FROM tbPesoPet pp INNER JOIN tbPesoPetCuidador ppc ON pp.idPesoPet = ppc.idPesoPet INNER JOIN tbcuidador c ON ppc.idCuidador = c.idCuidador WHERE pp.peso = '6-10kg' AND c.nomeCuidador = 'Marcia Maia';
+                                    ");
+                                    // echo mysqli_num_rows($result) . "<br>";
+                                    for($i = 0; $i < mysqli_num_rows($result); $i++){
+                                        // echo mysqli_fetch_assoc($result)['tipoPet'] . "<br>";
+                                    }
+                                    if(mysqli_num_rows($result) == 0){
+                                        echo "<p style='color:black;background-color:red;border-radius:20px;padding:2px'>" . "Não Aceito" . "</p>";
+                                    } else {
+                                        echo "<p style='color:black;background-color:#41fa13;border-radius:4px;padding:2px'>" . "Aceito" . "</p>";
+                                    }
+                                ?>
+                            </p>
                         </div>
-                        <div class="pets-aceito">
-                            <img  src="../../img/+_40kg-removebg-preview.png" alt="">
-                            <p>acima de 40kg</p>
+                        <div>
+                            <img src="../../img/até_25kg-removebg-preview.png" alt="">
+                            <p>11-20kg</p>
+                            <p>
+                                <?php
+                                    $result = mysqli_query($conexao, "SELECT pp.peso FROM tbPesoPet pp INNER JOIN tbPesoPetCuidador ppc ON pp.idPesoPet = ppc.idPesoPet INNER JOIN tbcuidador c ON ppc.idCuidador = c.idCuidador WHERE pp.peso = '11-20kg' AND c.nomeCuidador = 'Marcia Maia';
+                                    ");
+                                    // echo mysqli_num_rows($result) . "<br>";
+                                    for($i = 0; $i < mysqli_num_rows($result); $i++){
+                                        // echo mysqli_fetch_assoc($result)['tipoPet'] . "<br>";
+                                    }
+                                    if(mysqli_num_rows($result) == 0){
+                                        echo "<p style='color:black;background-color:red;border-radius:20px;padding:2px'>" . "Não Aceito" . "</p>";
+                                    } else {
+                                        echo "<p style='color:black;background-color:#41fa13;border-radius:4px;padding:2px'>" . "Aceito" . "</p>";
+                                    }
+                                ?>
+                            </p>
                         </div>
-                    </div>
-                    <div class="information-pets-02">
+                        <div>
+                            <img src="../../img/+_40kg-removebg-preview.png" alt="">
+                            <p>+21kg</p>
+                            <p>
+                                <?php
+                                    $result = mysqli_query($conexao, "SELECT pp.peso FROM tbPesoPet pp INNER JOIN tbPesoPetCuidador ppc ON pp.idPesoPet = ppc.idPesoPet INNER JOIN tbcuidador c ON ppc.idCuidador = c.idCuidador WHERE pp.peso = '+21kg' AND c.nomeCuidador = 'Marcia Maia';
+                                    ");
+                                    // echo mysqli_num_rows($result) . "<br>";
+                                    for($i = 0; $i < mysqli_num_rows($result); $i++){
+                                        // echo mysqli_fetch_assoc($result)['tipoPet'] . "<br>";
+                                    }
+                                    if(mysqli_num_rows($result) == 0){
+                                        echo "<p style='color:black;background-color:red;border-radius:20px;padding:2px'>" . "Não Aceito" . "</p>";
+                                    } else {
+                                        echo "<p style='color:black;background-color:#41fa13;border-radius:4px;padding:2px'>" . "Aceito" . "</p>";
+                                    }
+                                ?>
+                            </p>
+                        </div>
                     </div>
                 </div>
+                <!-- <div class="information">
+                    <div>
+                        <h2>Pets que aceito</h2>
+                    </div>
+                    <div class="information-pets">
+                        <div>
+                            <img src="../../img/gato.png" alt="">
+                            <p>Gato(a)</p>
+                                <p>
+                                    <?php
+                                        $result = mysqli_query($conexao, "SELECT tp.tipoPet FROM tbTipoPet tp INNER JOIN tbcuidador c ON tp.idCuidador = c.idCuidador WHERE tp.tipoPet = 'gata' || tp.tipopet = 'gato' AND c.nomeCuidador = 'Marcia Maia';
+                                        ");
+                                        // echo mysqli_num_rows($result) . "<br>";
+                                        for($i = 0; $i < mysqli_num_rows($result); $i++){
+                                            // echo mysqli_fetch_assoc($result)['tipoPet'] . "<br>";
+                                        }
+                                        if(mysqli_num_rows($result) == 0){
+                                            echo "<p style='color:black;background-color:red;border-radius:20px;padding:2px'>" . "Não Aceito" . "</p>";
+                                        } else {
+                                            echo "<p style='color:black;background-color:#41fa13;border-radius:4px;padding:2px'>" . "Aceito" . "</p>";
+                                        }
+                                    ?>
+                                </p>
+                        </div>
+                        <div>
+                            <img src="../../img/até_10kg-removebg-preview (1).png" alt="">
+                            <p>3-5kg</p>
+                            <p>
+                                <?php
+                                    $result = mysqli_query($conexao, "SELECT pp.peso FROM tbPesoPet pp INNER JOIN tbPesoPetCuidador ppc ON pp.idPesoPet = ppc.idPesoPet INNER JOIN tbcuidador c ON ppc.idCuidador = c.idCuidador WHERE pp.peso = '3-5kg' AND c.nomeCuidador = 'Marcia Maia';
+                                    ");
+                                    // echo mysqli_num_rows($result) . "<br>";
+                                    for($i = 0; $i < mysqli_num_rows($result); $i++){
+                                        // echo mysqli_fetch_assoc($result)['tipoPet'] . "<br>";
+                                    }
+                                    if(mysqli_num_rows($result) == 0){
+                                        echo "<p style='color:black;background-color:red;border-radius:20px;padding:2px'>" . "Não Aceito" . "</p>";
+                                    } else {
+                                        echo "<p style='color:black;background-color:#41fa13;border-radius:4px;padding:2px'>" . "Aceito" . "</p>";
+                                    }
+                                ?>
+                            </p>
+                        </div>
+                        <div>
+                            <img src="../../img/+25kg-removebg-preview.png" alt="">
+                            <p>6-10kg</p>
+                            <p>
+                                <?php
+                                    $result = mysqli_query($conexao, "SELECT pp.peso FROM tbPesoPet pp INNER JOIN tbPesoPetCuidador ppc ON pp.idPesoPet = ppc.idPesoPet INNER JOIN tbcuidador c ON ppc.idCuidador = c.idCuidador WHERE pp.peso = '6-10kg' AND c.nomeCuidador = 'Marcia Maia';
+                                    ");
+                                    // echo mysqli_num_rows($result) . "<br>";
+                                    for($i = 0; $i < mysqli_num_rows($result); $i++){
+                                        // echo mysqli_fetch_assoc($result)['tipoPet'] . "<br>";
+                                    }
+                                    if(mysqli_num_rows($result) == 0){
+                                        echo "<p style='color:black;background-color:red;border-radius:20px;padding:2px'>" . "Não Aceito" . "</p>";
+                                    } else {
+                                        echo "<p style='color:black;background-color:#41fa13;border-radius:4px;padding:2px'>" . "Aceito" . "</p>";
+                                    }
+                                ?>
+                            </p>
+                        </div>
+                        <div>
+                            <img src="../../img/até_25kg-removebg-preview.png" alt="">
+                            <p>11-20kg</p>
+                            <p>
+                                <?php
+                                    $result = mysqli_query($conexao, "SELECT pp.peso FROM tbPesoPet pp INNER JOIN tbPesoPetCuidador ppc ON pp.idPesoPet = ppc.idPesoPet INNER JOIN tbcuidador c ON ppc.idCuidador = c.idCuidador WHERE pp.peso = '11-20kg' AND c.nomeCuidador = 'Marcia Maia';
+                                    ");
+                                    // echo mysqli_num_rows($result) . "<br>";
+                                    for($i = 0; $i < mysqli_num_rows($result); $i++){
+                                        // echo mysqli_fetch_assoc($result)['tipoPet'] . "<br>";
+                                    }
+                                    if(mysqli_num_rows($result) == 0){
+                                        echo "<p style='color:black;background-color:red;border-radius:20px;padding:2px'>" . "Não Aceito" . "</p>";
+                                    } else {
+                                        echo "<p style='color:black;background-color:#41fa13;border-radius:4px;padding:2px'>" . "Aceito" . "</p>";
+                                    }
+                                ?>
+                            </p>
+                        </div>
+                        <div>
+                            <img src="../../img/+_40kg-removebg-preview.png" alt="">
+                            <p>+21kg</p>
+                            <p>
+                                <?php
+                                    $result = mysqli_query($conexao, "SELECT pp.peso FROM tbPesoPet pp INNER JOIN tbPesoPetCuidador ppc ON pp.idPesoPet = ppc.idPesoPet INNER JOIN tbcuidador c ON ppc.idCuidador = c.idCuidador WHERE pp.peso = '+21kg' AND c.nomeCuidador = 'Marcia Maia';
+                                    ");
+                                    // echo mysqli_num_rows($result) . "<br>";
+                                    for($i = 0; $i < mysqli_num_rows($result); $i++){
+                                        // echo mysqli_fetch_assoc($result)['tipoPet'] . "<br>";
+                                    }
+                                    if(mysqli_num_rows($result) == 0){
+                                        echo "<p style='color:black;background-color:red;border-radius:20px;padding:2px'>" . "Não Aceito" . "</p>";
+                                    } else {
+                                        echo "<p style='color:black;background-color:#41fa13;border-radius:4px;padding:2px'>" . "Aceito" . "</p>";
+                                    }
+                                ?>
+                            </p>
+                        </div>
+                    </div>
+                </div> -->
             </section>
             <!-- <div class="information"></div> -->
             <section>

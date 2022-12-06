@@ -1,0 +1,112 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(/img/v1008-25-a.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header{
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    width: 100%;
+    height: 105px;
+    background: linear-gradient(90deg, #FFC3A0 0%, #FFAFBD 100%);
+}
+
+header div{
+    margin-left: 150px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerPesquisa form{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 4px 15px #ccc;
+    padding: 20px;
+    width: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+/*buttons*/
+.btn{
+    width: 100px;
+    height: 35px;
+    background: #FFC3A0;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 2px 4px 10px #ccc;
+    font-size: 1em;
+    
+}
+
+.btn:hover{
+    border: 1px solid black;
+}
+
+.containerPesquisa div{
+    margin-right: 50px;
+}
+
+.containerPesquisa select{
+    text-align: center;
+    width: 220px;
+    padding: 5px;
+}
+
+
+/* box section*/
+
+.container-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 1000px;
+    margin: 25px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 3px 2px 10px #00000063;
+
+}
+
+/*card cuidador*/
+
+.cuidador1{
+ display: flex;
+ justify-content: space-evenly;
+ align-items: center;
+ border-radius: 5px;
+ margin-top: 50px;
+ box-shadow: inset -1px 0px 4px #00000063;
+ width: 730px;
+ height: 250px;
+}
+
+.cuidador1 img{
+    border-radius: 50%;
+}
+
+.list{
+    list-style: none;
+}
+
+
+
+

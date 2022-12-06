@@ -7,16 +7,6 @@
     <link rel="stylesheet" href="style.php">
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 
-    <script type="text/javascript">
-        $(document).on('click', 'ul li', function(){
-            $(this).addClass('active').siblings().removeClass('active')
-        })
-    </script>
-
-    <script>
-        document.getElementsByClassName()
-    </script>
-
     <title>Agendamento</title>
 </head>
 <body>
@@ -99,4 +89,13 @@
     </main>
     
 </body>
+    <script type="text/javascript">
+        $(document).on('click', 'ul li', function(){
+            $(this).addClass('active').siblings().removeClass('active')
+        })
+    </script>
+
+    <script>
+        document.getElementsByClassName()
+    </script>
 </html>
